@@ -1,0 +1,60 @@
+{
+    "hotels": [
+        {
+            "key": 1,
+            "title": "Atlantis Courtyard Hotel",
+            "location": "Çeşme/İzmir",
+            "image": "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "4.6"
+        },
+        {
+            "key": 2,
+            "title": "Sapphire Pinnacle Hotel",
+            "location": "Alanya/Antalya",
+            "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "3.7"
+        },
+        {
+            "key": 3,
+            "title": "Atlantic Pool Hotel",
+            "location": "Kemer/Antalya",
+            "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "4.5"
+        },
+        {
+            "key": 4,
+            "title": "Prince's Time Resort",
+            "location": "Marmaris/Muğla",
+            "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "4"
+        },
+        {
+            "key": 5,
+            "title": "Utopia Hotel",
+            "location": "Çeşme/İzmir",
+            "image": "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "3.9"
+        },
+        {
+            "key": 6,
+            "title": "Sanctum Resort",
+            "location": "Alanya/Antalya",
+            "image": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "4"
+        },
+        {
+            "key": 7,
+            "title": "Royal Seashore Resort",
+            "location": "Kemer/Antalya",
+            "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "4"
+        },
+        {
+            "key": 8,
+            "title": "Majestic Spire Hotel",
+            "location": "Marmaris/Muğla",
+            "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "rating": "4"
+        }
+    ]
+}
