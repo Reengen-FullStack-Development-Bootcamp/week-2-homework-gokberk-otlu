@@ -10,8 +10,11 @@
                 </b-form-rating>
             </div>
             <p class="hotel-card-title">{{ hotel.title }}</p>
-            <p class="hotel-card-location">{{ hotel.location }}</p>
-            <p>{{ hotel.key }}</p>
+            <p class="hotel-card-location">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <span>{{ hotel.location }}</span>
+            </p>
+            <p>$ {{ hotel.price }}</p>
             <div @click="directToHotelDetail" class="reservation-btn btn btn-primary mt-2">Reservation</div>
         </div>
     </b-col>
