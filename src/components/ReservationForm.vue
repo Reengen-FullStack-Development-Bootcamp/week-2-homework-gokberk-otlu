@@ -6,7 +6,7 @@
                 <b-col>
                     <!-- FIRSTNAME -->
                     <b-form-group id="example-input-group-1" label="First Name" label-for="example-input-1">
-                        <b-form-input @input="formUpdate" id="example-input-1" name="example-input-1" v-model.trim="$v.form.firstName.$model"
+                        <b-form-input ref="firstName" @input="formUpdate" id="example-input-1" name="example-input-1" v-model.trim="$v.form.firstName.$model"
                             :state="validateState('firstName')" aria-describedby="input-1-live-feedback"></b-form-input>
 
                         <b-form-invalid-feedback id="input-1-live-feedback">
@@ -157,6 +157,13 @@
         methods: {
             formUpdate() {
                 this.$emit('formUpdate');
+            }
+        },
+        watch: {
+            '$v.$invalid'() {
+                if(!this.$v.$invalid) {
+                    this.$emit("goNextInvalidForm");
+                }
             }
         }
     };

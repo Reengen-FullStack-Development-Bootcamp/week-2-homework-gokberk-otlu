@@ -6,7 +6,9 @@
             :title="key.split('-').join(' ')"
             :active="index === 0">
                 <p v-for="i in parseInt($route.query[key])" :key="i">
-                    <reservation-form :ref="`${key}-${i}`" @formUpdate="checkValidState" />
+                    <reservation-form :ref="`${key}-${i}`"
+                    @formUpdate="checkValidState"
+                    @goNextInvalidForm="goNextInvalidForm" />
                 </p>
             </b-tab>
         </b-tabs>
@@ -49,7 +51,15 @@ export default {
             if(this.validState) {
                 this.$router.push({ name: 'Payment', params: { price: this.$route.params.price } });
             }
+        },
+        goNextInvalidForm() {
+            const refValues = Object.values(this.$refs);
+            refValues.forEach(formItem => {
+                if(formItem[0].$v.$invalid) {
+                    formItem[0].$refs['firstName'].focus();
+                }
+            });
         }
-    },
+    }
 }
 </script>
