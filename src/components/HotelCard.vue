@@ -14,7 +14,7 @@
                 <i class="fas fa-map-marker-alt mr-2"></i>
                 <span>{{ hotel.location }}</span>
             </p>
-            <p>$ {{ hotel.price }}</p>
+            <p class="hotel-card-price">$ {{ hotel.price }}</p>
             <div @click="directToHotelDetail" class="reservation-btn btn btn-primary mt-2">Reservation</div>
         </div>
     </b-col>
@@ -70,6 +70,11 @@
     }
 
     .hotel-card-title {
+        font-weight: 600;
+    }
+
+    .hotel-card-price {
+        font-size: 1.1rem;
         font-weight: 600;
     }
 

@@ -16,7 +16,7 @@
 <style>
     .carousel-item {
         position: relative;
-        height: 350px;
+        height: 456px;
     }
 
     .carousel-item img {

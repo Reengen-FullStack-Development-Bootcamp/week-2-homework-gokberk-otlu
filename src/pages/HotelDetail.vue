@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <b-row class="mb-5">
+        <b-row class="mb-2">
             <div class="hotel-detail-name hotel-detail mr-5">
                 <span>{{ selectedHotel.title }}</span>
             </div>
@@ -10,16 +10,20 @@
             </div>
         </b-row>
         <b-row>
-            <b-col>
+            <b-col class="p-0">
                 <Carousel :carouselImages="selectedHotel.carousel" />
             </b-col>
             <b-col>
-                <h4>Total Price: {{ calculateTotalPrice }}</h4>
-                <p>price : {{ selectedHotel.price }}</p>
-                <hr>
                 <div>
-                    <h5>Available Room Number : {{ selectedHotel.availableRoomNumber }}</h5>
-                    <h6>Selected Room Number : {{ roomNumber }}</h6>
+                    <b-row class="mb-2">
+                        <b-col>
+                            <h5>Available Rooms : {{ selectedHotel.availableRoomNumber }}</h5>
+                            <h6>Selected Rooms : {{ roomNumber }}</h6>
+                        </b-col>
+                        <b-col class="total-price-box">
+                            <h4>Total Price: {{ calculateTotalPrice }}</h4>
+                        </b-col>
+                    </b-row>
                     <div @click="decreaseRoomNumber" class="btn btn-success mr-2">Decrease Room Number</div>
                     <div @click="increaseRoomNumber" class="btn btn-success">Increase Room Number</div>
                 </div>
@@ -31,17 +35,31 @@
                         reservationList = Object.assign({}, reservationList);"
                         @updateCheckOut="reservationList[`room_${roomIndex}`].checkOut = $event;
                         reservationList = Object.assign({}, reservationList);" />
-                        <div class="btn btn-primary" @click="decreaseAdultGuestNumber(roomIndex)">Adult -</div>
-                        <div class="btn btn-primary" @click="increaseAdultGuestNumber(roomIndex)">Adult +</div>
-                        <br><br>
-                        <div class="btn btn-primary" @click="decreaseChildGuestNumber(roomIndex)">Child -</div>
-                        <div class="btn btn-primary" @click="increaseChildGuestNumber(roomIndex)">Child +</div>
-                        <br><br>
-                        <div>adult: {{ reservationList[`room_${roomIndex}`].adult }}</div>
-                        <div>child: {{ reservationList[`room_${roomIndex}`].child }}</div>
+                        <div class="mb-2">
+                            <span class="counter-header">Adult : </span>
+                            <div class="btn btn-dark" @click="decreaseAdultGuestNumber(roomIndex)">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <span class="ml-1 mr-1">{{ reservationList[`room_${roomIndex}`].adult }}</span>
+                            <div class="btn btn-dark" @click="increaseAdultGuestNumber(roomIndex)">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="counter-header">Child : </span>
+                            <div class="btn btn-dark" @click="decreaseChildGuestNumber(roomIndex)">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <span class="ml-1 mr-1">{{ reservationList[`room_${roomIndex}`].child }}</span>
+                            <div class="btn btn-dark" @click="increaseChildGuestNumber(roomIndex)">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
                     </b-tab>
                 </b-tabs>
-                <div @click="reserve" class="btn btn-warning">RESERVE</div>
+                <div class="d-flex flex-direction-column flex-column mt-3">
+                    <b-button @click="reserve" variant="outline-primary" class="align-self-end">Reserve</b-button>
+                </div>
             </b-col>
         </b-row>
     </b-container>
@@ -154,7 +172,7 @@
                 
                 // navigate with room and guest number informations
                 if(validReservations.length > 0) {
-                    this.$router.push({ name: 'ReservationForms', query: queryData });
+                    this.$router.push({ name: 'ReservationForms', params: { price: this.calculateTotalPrice } , query: queryData });
                 } else {
                     this.callToaster("There is no valid selection")
                 }
@@ -199,15 +217,6 @@
 </script>
 
 <style>
-    .hotel-detail-name {
-        background-color: red;
-
-    }
-
-    .hotel-detail-location {
-        background-color: blue;
-    }
-
     .hotel-detail {
         display: flex;
         justify-content: center;
@@ -225,5 +234,16 @@
         background-color: #fff;
         box-sizing: border-box;
         padding: 10px 15px;
+    }
+
+    .total-price-box {
+        border-left: 1px solid rgb(201, 199, 199);
+        display: flex;
+        align-items: center;
+    }
+
+    .counter-header {
+        font-size: .9rem;
+        font-weight: 600;
     }
 </style>

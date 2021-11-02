@@ -6,11 +6,12 @@
             :title="key.split('-').join(' ')"
             :active="index === 0">
                 <p v-for="i in parseInt($route.query[key])" :key="i">
-                    <reservation-form :ref="`${key}-${i}`" />
+                    <reservation-form :ref="`${key}-${i}`" @formUpdate="checkValidState" />
                 </p>
             </b-tab>
         </b-tabs>
-        <b-button @click="submitForms" class="mt-3" type="submit" variant="success">GO TO PAYMENT</b-button>
+        <b-button @click="checkForms" :disabled="validState" class="mt-3 mr-2" type="submit" variant="info">CHECK</b-button>
+        <b-button @click="submitForms" :disabled="!validState" class="mt-3" type="submit" variant="success">GO TO PAYMENT</b-button>
     </b-container>
 </template>
 
@@ -26,18 +27,28 @@ export default {
         ReservationForm
     },
     methods: {
-        submitForms() {
+        checkForms() {
+            const refValues = Object.values(this.$refs);
+
+            refValues.forEach(formItem => {
+                formItem[0].$v.form.$touch();
+            });
+        },
+        checkValidState() {
             const refValues = Object.values(this.$refs);
 
             let output = true;
 
             refValues.forEach(formItem => {
-                formItem[0].$v.form.$touch();
-                output = output & !formItem[0].$v.$anyError;
+                output = output && !formItem[0].$v.$invalid;
             });
 
             this.validState = output;
-            console.log(output);
+        },
+        submitForms() {
+            if(this.validState) {
+                this.$router.push({ name: 'Payment', params: { price: this.$route.params.price } });
+            }
         }
     },
 }
