@@ -99,7 +99,6 @@
                     specifiedRoom.adult -= 1;
                     this.reservationList = Object.assign({}, this.reservationList);
                 }
-                console.log(specifiedRoom);
             },
             increaseAdultGuestNumber(roomIndex) {
                 let specifiedRoom = this.reservationList[`room_${roomIndex}`];
@@ -140,9 +139,17 @@
             },
             reserve() {
                 const reservationListValues = Object.values(this.reservationList);
+                // filter room selections if they're valid
                 let validReservations = reservationListValues
-                .filter(value => value.adult + value.child > 0 && this.dateComparator(value) > 0)
-                console.log(validReservations);
+                .filter(value => value.adult + value.child > 0 && this.dateComparator(value) > 0);
+
+                let queryData = {};
+                validReservations.forEach((reservation, index) => {
+                    queryData[`room-${index + 1}`] = reservation.adult + reservation.child;
+                })
+                
+                // navigate with room and guest number informations
+                this.$router.push({ name: 'ReservationForms', query: queryData });
             },
             callToaster(text) {
                 this.$bvToast.toast(text, {
