@@ -3,6 +3,7 @@ import 'mutationobserver-shim'
 import Vue from 'vue'
 import './plugins/bootstrap-vue'
 import './plugins/vue-router'
+import './plugins/vuelidate-plugin'
 import App from './App.vue'
 
 import VueRouter from 'vue-router'

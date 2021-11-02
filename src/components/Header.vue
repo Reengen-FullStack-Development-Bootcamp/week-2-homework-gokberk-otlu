@@ -1,16 +1,7 @@
 <template>
     <div class="header-component">
         <b-navbar toggleable="lg" type="dark" variant="info">
-            <b-navbar-brand @click="goToHomePage">NavBar</b-navbar-brand>
-
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-            <b-collapse id="nav-collapse" is-nav>
-                <b-navbar-nav>
-                    <b-nav-item>Link</b-nav-item>
-                    <b-nav-item>Disabled</b-nav-item>
-                </b-navbar-nav>
-            </b-collapse>
+            <b-navbar-brand @click="goToHomePage">Hotel App</b-navbar-brand>
         </b-navbar>
     </div>
 </template>

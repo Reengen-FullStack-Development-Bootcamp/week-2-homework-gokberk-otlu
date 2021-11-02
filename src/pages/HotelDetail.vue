@@ -25,7 +25,7 @@
                 </div>
                 <hr>
                 <b-tabs content-class="mt-3">
-                    <b-tab v-for="roomIndex in roomNumber" :key="roomIndex" :title="`room-${roomIndex}`" :class="{'active': roomIndex === roomNumber}">
+                    <b-tab v-for="roomIndex in roomNumber" :key="roomIndex" :title="`Room ${roomIndex}`" :active="roomIndex === roomNumber">
                         <ReservationDate
                         @updateCheckIn="reservationList[`room_${roomIndex}`].checkIn = $event; 
                         reservationList = Object.assign({}, reservationList);"
@@ -79,6 +79,10 @@
             decreaseRoomNumber() {
                 if(this.roomNumber > 1) {
                     this.roomNumber -= 1;
+                    let reservationListKeys = Object.keys(this.reservationList);
+                    let lastRoomKey = reservationListKeys[reservationListKeys.length - 1];
+                    delete this.reservationList[lastRoomKey];
+                    this.reservationList = Object.assign({}, this.reservationList);
                 }
             },
             increaseRoomNumber() {
