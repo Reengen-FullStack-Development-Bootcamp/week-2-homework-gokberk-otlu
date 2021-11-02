@@ -14,20 +14,22 @@
                 <i class="fas fa-map-marker-alt mr-2"></i>
                 <span>{{ hotel.location }}</span>
             </p>
-            <p class="hotel-card-price">$ {{ hotel.price }}</p>
+            <p class="hotel-card-price">{{ hotel.price | dolarSign }}</p>
             <div @click="directToHotelDetail" class="reservation-btn btn btn-primary mt-2">Reservation</div>
         </div>
     </b-col>
 </template>
 
 <script>
+    import filters from '../mixins/filters' ;
     export default {
         props: ["hotel"],
         methods: {
             directToHotelDetail() {
                 this.$router.push({name: 'HotelDetail', params: { id: this.hotel.key }})
             }
-        }
+        },
+        mixins: [filters]
     }
 </script>
 

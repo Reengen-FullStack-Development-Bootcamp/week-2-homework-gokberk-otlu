@@ -3,13 +3,14 @@
         <i v-if="isPending" class="fas fa-circle-notch fa-spin fa-3x"></i>
         <div v-else class="payment-window">
             <i class="far fa-list-alt fa-3x mb-2"></i>
-            <p class="mb-3"><b>Total Price: </b>$ {{ $route.params.price }}</p>
+            <p class="mb-3"><b>Total Price: </b>{{ $route.params.price | dolarSign }}</p>
             <b-button @click="navigateToHome" variant="outline-light">Make the Payment</b-button>
         </div>
     </div>
 </template>
 
 <script>
+import filters from '../mixins/filters'
 export default {
     data() {
         return {
@@ -25,7 +26,8 @@ export default {
         navigateToHome() {
             this.$router.push({ name: 'Home' });
         }
-    }
+    },
+    mixins: [filters]
 }
 </script>
 

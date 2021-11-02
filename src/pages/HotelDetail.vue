@@ -21,7 +21,7 @@
                             <h6>Selected Rooms : {{ roomNumber }}</h6>
                         </b-col>
                         <b-col class="total-price-box">
-                            <h4>Total Price: {{ calculateTotalPrice }}</h4>
+                            <h4>Total Price: {{ calculateTotalPrice | dolarSign }}</h4>
                         </b-col>
                     </b-row>
                     <div @click="decreaseRoomNumber" class="btn btn-success mr-2">Decrease Room Number</div>
@@ -68,6 +68,7 @@
 <script>
     import ReservationDate from '../components/ReservationDate.vue'
     import Carousel from '../components/Carousel.vue'
+    import filters from '../mixins/filters'
 
     const json = require("../data/db.json");
 
@@ -76,6 +77,7 @@
             ReservationDate,
             Carousel
         },
+        mixins: [filters],
         data() {
             return {
                 selectedHotel: json.hotels.filter(hotel => {
