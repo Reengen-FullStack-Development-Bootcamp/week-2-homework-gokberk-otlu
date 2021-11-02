@@ -40,7 +40,7 @@
     .inner-hotel-card {
         border-radius: 10px;
         overflow: keyden;
-        transition: box-shadow 1s;
+        transition: box-shadow .6s;
         padding: 10px;
         background-color: rgb(233, 230, 227);
         display: flex;
@@ -55,8 +55,9 @@
     .hotel-card-img-container {
         width: 100%;
         height: 200px;
+        border-radius: 10px;
         position: relative;
-        overflow: keyden;
+        overflow: hidden;
     }
 
     .hotel-card-img-container:hover img {
