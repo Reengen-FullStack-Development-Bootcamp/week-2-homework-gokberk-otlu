@@ -153,7 +153,11 @@
                 })
                 
                 // navigate with room and guest number informations
-                this.$router.push({ name: 'ReservationForms', query: queryData });
+                if(validReservations.length > 0) {
+                    this.$router.push({ name: 'ReservationForms', query: queryData });
+                } else {
+                    this.callToaster("There is no valid selection")
+                }
             },
             callToaster(text) {
                 this.$bvToast.toast(text, {
