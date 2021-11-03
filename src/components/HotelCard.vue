@@ -62,7 +62,7 @@
         overflow: hidden;
     }
 
-    .hotel-card-img-container:hover img {
+    .hotel-card:hover img {
         transform: scale(1.1);
     }
 
