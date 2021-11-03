@@ -24,7 +24,7 @@ Shopping Application built in VueJs.
 
 ### Build With
 
-- HTM
+- HTML
 - CSS
 - [BootstrapVue](https://bootstrap-vue.org/)
 - [VueJs](https://vuejs.org/)
