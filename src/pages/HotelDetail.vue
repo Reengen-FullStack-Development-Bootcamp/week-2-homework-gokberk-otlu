@@ -97,6 +97,7 @@
         },
         methods: {
             decreaseRoomNumber() {
+                // decrease room number
                 if(this.roomNumber > 1) {
                     this.roomNumber -= 1;
                     let reservationListKeys = Object.keys(this.reservationList);
@@ -106,18 +107,22 @@
                 }
             },
             increaseRoomNumber() {
+                // increase room number
                 let addedRoom = {
                     adult: 0,
                     child: 0,
                     checkIn: '',
                     checkOut: ''
                 }
+
+                // check the available rooms
                 if(this.roomNumber < this.selectedHotel.availableRoomNumber) {
                     this.reservationList[`room_${this.roomNumber + 1}`] = addedRoom;
                     this.roomNumber += 1;
                 }
             },
             decreaseAdultGuestNumber(roomIndex) {
+                // decrease number of adult guest reservation for valid room
                 let specifiedRoom = this.reservationList[`room_${roomIndex}`];
                 if(specifiedRoom.child + specifiedRoom.adult > 0 && specifiedRoom.adult > 0) {
                     specifiedRoom.adult -= 1;
@@ -125,6 +130,7 @@
                 }
             },
             increaseAdultGuestNumber(roomIndex) {
+                // increase number of adult guest reservation for valid room
                 let specifiedRoom = this.reservationList[`room_${roomIndex}`];
                 if(this.selectedHotel.maxGuestLimit > specifiedRoom.child + specifiedRoom.adult) {
                     specifiedRoom.adult += 1;
@@ -132,6 +138,7 @@
                 }
             },
             decreaseChildGuestNumber(roomIndex) {
+                // decrease number of child guest reservation for valid room
                 let specifiedRoom = this.reservationList[`room_${roomIndex}`];
                 if(specifiedRoom.child + specifiedRoom.adult > 0 && specifiedRoom.child > 0) {
                     specifiedRoom.child -= 1;
@@ -139,6 +146,7 @@
                 }
             },
             increaseChildGuestNumber(roomIndex) {
+                // increase number of child guest reservation for valid room
                 let specifiedRoom = this.reservationList[`room_${roomIndex}`];
                 if(this.selectedHotel.maxGuestLimit > specifiedRoom.child + specifiedRoom.adult) {
                     specifiedRoom.child += 1;
@@ -151,6 +159,7 @@
                 var checkOutDate = new Date(room.checkOut);
                 var diffDays = checkOutDate.getDate() - checkInDate.getDate();
 
+                // set date difference
                 if(isNaN(diffDays)) {
                         diffDays = 0;
                 } else if(diffDays < 0) {
@@ -167,6 +176,7 @@
                 let validReservations = reservationListValues
                 .filter(value => value.adult + value.child > 0 && this.dateComparator(value) > 0);
 
+                // prepare room informations to send to ReservationForm as queries
                 let queryData = {};
                 validReservations.forEach((reservation, index) => {
                     queryData[`room-${index + 1}`] = reservation.adult + reservation.child;
@@ -180,6 +190,7 @@
                 }
             },
             callToaster(text) {
+                // show toaster message
                 this.$bvToast.toast(text, {
                     title: 'Alert',
                     autoHideDelay: 1000
@@ -188,6 +199,7 @@
         },
         computed: {
             calculateTotalPrice() {
+                // calculate total price according to clients
                 var totalPrice = 0;
                 const reservationListKeys = Object.keys(this.reservationList);
                 reservationListKeys.forEach(key => {

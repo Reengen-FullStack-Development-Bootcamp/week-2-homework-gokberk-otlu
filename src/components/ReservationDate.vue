@@ -17,10 +17,12 @@
     },
     watch: {
         checkin() {
-            this.$emit("updateCheckIn", this.checkin);
+          // emit updated checkin date when it's changed inside component
+          this.$emit("updateCheckIn", this.checkin);
         },
         checkout() {
-            this.$emit("updateCheckOut", this.checkout);
+          // emit updated checkout date when it's changed inside component
+          this.$emit("updateCheckOut", this.checkout);
         }
     }
   }

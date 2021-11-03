@@ -7,6 +7,8 @@
             :active="index === 0">
                 <p v-for="i in parseInt($route.query[key])" :key="i">
                     <reservation-form :ref="`${key}-${i}`"
+                    :inputGroup="i"
+                    :roomNo="index + 1"
                     @formUpdate="checkValidState"
                     @goNextInvalidForm="goNextInvalidForm" />
                 </p>
@@ -32,11 +34,13 @@ export default {
         checkForms() {
             const refValues = Object.values(this.$refs);
 
+            // checks the validation of inputs inside the form
             refValues.forEach(formItem => {
                 formItem[0].$v.form.$touch();
             });
         },
         checkValidState() {
+            // runs when form is updated
             const refValues = Object.values(this.$refs);
 
             let output = true;
@@ -48,11 +52,13 @@ export default {
             this.validState = output;
         },
         submitForms() {
+            // go to payment page if validation is provided for each form
             if(this.validState) {
                 this.$router.push({ name: 'Payment', params: { price: this.$route.params.price } });
             }
         },
         goNextInvalidForm() {
+            // if a form is validated, find the first invalid form
             const refValues = Object.values(this.$refs);
             refValues.forEach(formItem => {
                 if(formItem[0].$v.$invalid) {
