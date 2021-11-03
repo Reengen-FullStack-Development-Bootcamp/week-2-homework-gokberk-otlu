@@ -58,13 +58,15 @@ export default {
             }
         },
         goNextInvalidForm() {
-            // if a form is validated, find the first invalid form
             const refValues = Object.values(this.$refs);
-            refValues.forEach(formItem => {
-                if(formItem[0].$v.$invalid) {
-                    formItem[0].$refs['firstName'].focus();
+
+            // if a form is validated, find the first invalid form
+            for(let i = 0; i < refValues.length; i++) {
+                if(refValues[i][0].$v.$invalid) {
+                    refValues[i][0].$refs['firstName'].focus();
+                    break;
                 }
-            });
+            }
         }
     }
 }
