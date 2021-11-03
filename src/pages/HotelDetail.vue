@@ -158,7 +158,6 @@
                 var checkInDate = new Date(room.checkIn);
                 var checkOutDate = new Date(room.checkOut);
                 var diffDays = (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24);
-                console.log(diffDays);
 
                 // set date difference
                 if(isNaN(diffDays)) {
